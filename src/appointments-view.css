@@ -40,3 +40,20 @@
 .ap-card[aria-expanded="true"] .ap-arrow { rotate: 90deg; }
 .ap-arrow { transition: rotate 200ms ease-in-out; }
 @media(prefers-reduced-motion:reduce) { .ap-arrow { transition: none; } }
+
+/* Nested service summary and connected process indicators. */
+.ap-detail-inline { margin: 10px 0 32px; padding: 12px 14px 26px; }
+.ap-detail-summary { border: 1px solid #e7b9cb; border-radius: 15px; padding: 7px 12px; background: #fffafd; }
+.ap-detail-summary h2, .ap-detail-summary p { font-size: 14px; margin: 3px 0; }
+.ap-process { display: flex; list-style: none; padding: 0; margin: 10px 0 0; width: min(100%, 228px); }
+.ap-process li { position: relative; flex: 1; min-width: 0; text-align: center; color: #79394f; }
+.ap-process li:not(:last-child)::after { content: ''; position: absolute; top: 20px; left: calc(50% + 20px); width: calc(100% - 40px); height: 1px; background: #de9bb5; }
+.ap-process-icon { position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; box-sizing: border-box; margin: 0 auto 6px; border: 1px solid #de85a8; border-radius: 50%; background: #fff5f9; box-shadow: 0 0 6px #eb8fb4; }
+.ap-process li:first-child .ap-process-icon { border-color: #cf5687; background: #ffe7f0; box-shadow: 0 0 7px #de6b99; }
+.ap-process-icon svg { width: 20px; height: 20px; color: #b64872; }
+.ap-process-label { display: block; font: 11px/1.45 Arial, sans-serif; }
+.ap-detail-inline .ap-detail-note { margin-top: 12px; }
+.ap-tabs button, .ap-card, .ap-detail-close { transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out, box-shadow .3s ease-in-out; }
+.ap-card:hover { background: #fff4f8; box-shadow: 0 5px 16px #d86d9130; }
+.ap-detail-menu .ap-detail-close:hover { background: #ffe3ee; border-color: #c75381; }
+@media (prefers-reduced-motion: reduce) { .ap-tabs button, .ap-card, .ap-detail-close { transition: none; } }
