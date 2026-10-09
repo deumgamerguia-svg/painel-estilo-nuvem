@@ -15,10 +15,14 @@ Também pode ser servida como página estática, sem instalar dependências, pre
 - `src/panel.js`: serviços, navegação e demonstração de agendamento.
 - `public/bella-lash/`: imagens recortadas da referência fornecida.
 
-Copie as imagens para a pasta pública do seu projeto. Adapte a estrutura HTML ao componente do framework usado pelo SaaS e importe o CSS. Em `src/panel.js`, substitua o array `services` pelos dados do estabelecimento e as operações `localStorage` pela API da agenda existente. Configure o contato na seção `contact`.
+Copie as imagens para a pasta pública do seu projeto. Adapte a estrutura HTML ao componente do framework usado pelo SaaS e importe o CSS. Em `src/panel.js`, substitua o array `services` pelos dados do estabelecimento e as operações `localStorage` pela API da agenda existente. Cada serviço deve fornecer `durationMinutes` (duração em minutos). O renderizador compartilhado sempre mostra esse campo abaixo do preço em todos os cartões do catálogo.
 
 ## Comportamento atual
 
-Os botões Agendar abrem nome, data e horário. A aba Meus agendamentos lista e permite cancelar os horários salvos neste navegador. É uma demonstração local: não há login, backend, disponibilidade real, sincronização, cobrança nem confirmação pelo estabelecimento. A seção Fale conosco indica que o contato precisa ser configurado, evitando usar um número inventado.
+Os botões Agendar abrem nome, data e horário. A aba Meus agendamentos lista e permite cancelar os horários salvos neste navegador. É uma demonstração local: não há login, backend, disponibilidade real, sincronização, cobrança nem confirmação pelo estabelecimento. A barra inferior tem cantos arredondados nos quatro lados e apenas Início e Meus agendamentos.
 
 As fotos foram extraídas do print; para maior resolução, substitua pelos arquivos originais mantendo as mesmas proporções.
+
+## Duração dos serviços
+
+Valores de exemplo, ajustáveis no array `services`: extensão 120 min, manutenção 60 min e remoção 30 min. Substitua pelos tempos reais do estabelecimento ao integrar.
