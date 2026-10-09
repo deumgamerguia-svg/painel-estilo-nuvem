@@ -57,3 +57,9 @@
 .ap-card:hover { background: #fff4f8; box-shadow: 0 5px 16px #d86d9130; }
 .ap-detail-menu .ap-detail-close:hover { background: #ffe3ee; border-color: #c75381; }
 @media (prefers-reduced-motion: reduce) { .ap-tabs button, .ap-card, .ap-detail-close { transition: none; } }
+
+/* Reveal from the top; collapse toward the top without changing the panel design. */
+.ap-detail-reveal { display: flow-root; }
+.ap-detail-reveal .ap-detail-menu { animation: none; }
+.ap-arrow { transition: rotate 300ms ease-in-out; }
+@media (prefers-reduced-motion: reduce) { .ap-arrow { transition: none; } }
