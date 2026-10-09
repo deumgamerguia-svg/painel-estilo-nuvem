@@ -7,3 +7,25 @@
 /* Price and duration share one accent token. */
 .duration{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:500;color:var(--service-accent,#ff4383);line-height:1.4}
 .duration-clock{width:17px;height:17px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Gentle feedback for catalogue, navigation and booking controls. */
+:is(button, .panel-navigation a) {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    filter 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  :is(button, .panel-navigation a):not(:disabled):not([aria-disabled="true"]):hover {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+    box-shadow: 0 4px 12px rgb(163 52 85 / 14%);
+  }
+}
+:is(button, .panel-navigation a):not(:disabled):not([aria-disabled="true"]):active {
+  transform: scale(0.97);
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(button, .panel-navigation a) { transition: none !important; }
+  :is(button, .panel-navigation a):hover,
+  :is(button, .panel-navigation a):active { transform: none !important; }
+}
