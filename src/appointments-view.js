@@ -24,15 +24,21 @@ export function mountAppointments(root, images) {
       const date=document.createElement('p');date.innerHTML=svg('calendar')+'<span>'+item.date.split('-').reverse().join('/')+' · '+item.time+'</span>';
       const status=document.createElement('span');status.className='ap-status '+(item.status==='Confirmado'?'ap-confirmed':'ap-completed');status.innerHTML=svg(item.status==='Confirmado'?'confirmed':'check')+item.status;
       content.append(title,professional,date,status);const arrow=document.createElement('span');arrow.className='ap-arrow';arrow.innerHTML=svg('arrow');card.append(image,content,arrow);list.append(card);
+      const detailId = 'ap-detail-' + item.date + '-' + item.time.replace(':', '');
+      card.setAttribute('aria-expanded', 'false');
+      card.setAttribute('aria-controls', detailId);
       card.onclick = () => {
-        const dialog = document.createElement('dialog');
-        dialog.className = 'ap-detail ap-detail-menu';
-        dialog.setAttribute('aria-labelledby', 'ap-detail-title');
+        const existing = document.getElementById(detailId);
+        if (existing) { existing.remove(); card.setAttribute('aria-expanded', 'false'); return; }
+        const dialog = document.createElement('section');
+        dialog.className = 'ap-detail ap-detail-menu ap-detail-inline';
+        dialog.id = detailId;
+        dialog.setAttribute('aria-labelledby', detailId + '-title');
         const legend = document.createElement('span');
         legend.className = 'ap-detail-date';
         legend.textContent = item.date.slice(8,10) + '/' + item.date.slice(5,7);
         const heading = document.createElement('h2');
-        heading.id = 'ap-detail-title';
+        heading.id = detailId + '-title';
         heading.innerHTML = '<span class="ap-info-icon" aria-hidden="true">ℹ</span>';
         const name = document.createElement('span'); name.textContent = item.name; heading.append(name);
         const when = document.createElement('p');
@@ -48,10 +54,10 @@ export function mountAppointments(root, images) {
         const close = document.createElement('button');
         close.type = 'button'; close.className = 'ap-detail-close';
         close.setAttribute('aria-label', 'Fechar detalhes do agendamento');
-        close.textContent = '×'; close.onclick = () => dialog.close();
+        close.textContent = '×'; close.onclick = () => { dialog.remove(); card.setAttribute('aria-expanded', 'false'); card.focus(); };
         dialog.append(legend, heading, when, professional, note, close);
-        dialog.addEventListener('close', () => { dialog.remove(); card.focus(); });
-        root.append(dialog); dialog.showModal();
+        card.after(dialog);
+        card.setAttribute('aria-expanded', 'true');
       };
     }
     if(!visible.length){const empty=document.createElement('p');empty.className='ap-empty';empty.textContent='Nenhum próximo agendamento.';list.append(empty);}
