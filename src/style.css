@@ -30,8 +30,13 @@
   :is(button, .panel-navigation a):active { transform: none !important; }
 }
 
-/* A single selection surface slides continuously between the two destinations. */
-.nav::before{content:'';position:absolute;inset:7px auto 7px 5px;width:calc((100% - 10px)/2);border-radius:32px;background:#fff7;box-shadow:0 2px 10px #ac426514;pointer-events:none;transition:transform 320ms cubic-bezier(.22,.75,.25,.99)}
-.nav:has([data-view="appointments"].active)::before{transform:translateX(100%)}
-.nav button{position:relative;z-index:1}
-@media(prefers-reduced-motion:reduce){.nav::before{transition:none}}
+
+/* Consistent 200ms hover feedback, including appointment controls. */
+:is(button, .panel-navigation a, .ap-tabs button, .ap-card, .ap-detail-close) {
+  transition: transform .2s ease-in-out, box-shadow .2s ease-in-out,
+    filter .2s ease-in-out, background-color .2s ease-in-out,
+    border-color .2s ease-in-out, color .2s ease-in-out, opacity .2s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(button, .panel-navigation a, .ap-tabs button, .ap-card, .ap-detail-close) { transition: none !important; }
+}
