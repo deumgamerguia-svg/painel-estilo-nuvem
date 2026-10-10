@@ -44,3 +44,14 @@
 /* Reference description: beneath the title, above the price. */
 .service-with-description .detail h2{margin-bottom:4px}
 .service .service-description{margin:0 0 8px;font-family:inherit;font-size:13.6px;font-weight:400;line-height:1.25;letter-spacing:0;color:#7f93b1}
+
+/* One continuous Bézier wave, without overlapping or rotated cutouts. */
+.wave {
+  left: 0; width: 100%; border-radius: 0; transform: none;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 520 120%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0 24 C100 0 160 8 260 22 C360 36 440 34 520 12 L520 120 L0 120 Z%27/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 520 120%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0 24 C100 0 160 8 260 22 C360 36 440 34 520 12 L520 120 L0 120 Z%27/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  pointer-events: none;
+}
+
