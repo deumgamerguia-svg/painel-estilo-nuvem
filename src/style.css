@@ -40,3 +40,7 @@
 @media (prefers-reduced-motion: reduce) {
   :is(button, .panel-navigation a, .ap-tabs button, .ap-card, .ap-detail-close) { transition: none !important; }
 }
+
+/* Reference description: beneath the title, above the price. */
+.service-with-description .detail h2{margin-bottom:4px}
+.service .service-description{margin:0 0 8px;font:400 16px/1.25 Arial,sans-serif;letter-spacing:0;color:#7f93b1}
